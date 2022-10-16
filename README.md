@@ -1,5 +1,9 @@
 # Lotto numbers
 
+## Link
+
+- Live Site URL: [https://saadmalik200.github.io/state-lotto/](https://saadmalik200.github.io/state-lotto/)
+
 Let's create a `LuckyNumbers` component.
 
 ![example](example.gif)
