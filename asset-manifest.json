@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/state-lotto/static/css/main.93d34b08.css",
-    "main.js": "/state-lotto/static/js/main.ac0ac80f.js",
+    "main.css": "/state-lotto/static/css/main.f2581569.css",
+    "main.js": "/state-lotto/static/js/main.b2896450.js",
     "index.html": "/state-lotto/index.html",
-    "main.93d34b08.css.map": "/state-lotto/static/css/main.93d34b08.css.map",
-    "main.ac0ac80f.js.map": "/state-lotto/static/js/main.ac0ac80f.js.map"
+    "main.f2581569.css.map": "/state-lotto/static/css/main.f2581569.css.map",
+    "main.b2896450.js.map": "/state-lotto/static/js/main.b2896450.js.map"
   },
   "entrypoints": [
-    "static/css/main.93d34b08.css",
-    "static/js/main.ac0ac80f.js"
+    "static/css/main.f2581569.css",
+    "static/js/main.b2896450.js"
   ]
 }
