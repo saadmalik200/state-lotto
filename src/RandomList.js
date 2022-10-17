@@ -1,13 +1,12 @@
-import "./App.css";
 import { useState } from "react";
 
-const numbers49 = [];
+function RandomList() {
+  const numbers49 = [];
 
-for (let i = 1; i < 50; i++) numbers49.push(i);
+  for (let i = 1; i < 50; i++) numbers49.push(i);
 
-function App() {
   const [sixnumbers, setSixnumbers] = useState(new Array(6).fill(0));
-  const [tzoker, setTzoker] = useState(0);
+  const [tzoker, setTzoker] = useState([0]);
 
   const handleGenerate = () => {
     const oldNumbers = [];
@@ -26,23 +25,43 @@ function App() {
     setTzoker(Math.ceil(Math.random() * 10));
   };
 
-  console.log(sixnumbers);
-  return (
-    <div className="App">
-      <div className="allnumbers">
-        <div className="sixnumbers">
-          {sixnumbers.map((item, idx) => (
-            <input key={idx} value={item} disabled />
-          ))}
-        </div>
+  const resetHandler = () => {
+    setSixnumbers([]);
+    setTzoker([]);
+  };
 
-        <div className="tzoker">
-          <input value={tzoker} disabled />
-        </div>
+  return (
+    <div>
+      <div className="flex gap-5">
+        {sixnumbers.map((item, i) => (
+          <div className="my-5 flex items-center justify-center bg-transparent text-blue-700 font-semibold border border-blue-500 rounded-full p-4">
+            <p className="w-[20px] h-[20px] text-center" key={i}>
+              {item}
+            </p>
+          </div>
+        ))}
+        {tzoker.length !== 0 && (
+          <div className=" bg-gray-200 my-5 flex items-center justify-center bg-transparent text-blue-700 font-semibold border border-blue-500 rounded-full p-4">
+            <p className="w-[20px] h-[20px] text-center">{tzoker}</p>
+          </div>
+        )}
       </div>
-      <button onClick={handleGenerate}>Generate</button>
+      <div className="flex gap-[10px] mt-3">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+          onClick={resetHandler}
+        >
+          Reset
+        </button>
+        <button
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          onClick={handleGenerate}
+        >
+          Show me lucky numbers
+        </button>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default RandomList;
