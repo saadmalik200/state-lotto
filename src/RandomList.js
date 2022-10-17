@@ -1,71 +1,48 @@
+import "./App.css";
 import { useState } from "react";
 
-function RandomList() {
-  const [numbers, setNewNumber] = useState([]);
+const numbers49 = [];
 
-  // //   GENERATE RANDOM NUMBERS FROM ARRAY
-  // const randomNum = () => {
-  //   const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  //   let counter = 0;
-  //   const totalDigits = 4;
-  //   let random = "";
-  //   while (counter < totalDigits) {
-  //     const idx = Math.ceil(Math.random() * array.length - 1);
-  //     random += array[idx];
-  //     array.splice(idx, 1);
-  //     counter++;
-  //   }
+for (let i = 1; i < 50; i++) numbers49.push(i);
 
-  //   return random;
-  // };
+function App() {
+  const [sixnumbers, setSixnumbers] = useState(new Array(6).fill(0));
+  const [tzoker, setTzoker] = useState(0);
 
-  // console.log(randomNum());
+  const handleGenerate = () => {
+    const oldNumbers = [];
 
-  const randomHandler = () => {
-    let newArr = [...numbers];
+    for (let i = 0; i < 6; i++) {
+      const randomIndex = Math.floor(Math.random() * numbers49.length);
+      const randomNumber = numbers49[randomIndex];
+      console.log("randomNumber", randomNumber);
+      oldNumbers.push(randomNumber);
 
-    const random1 = Math.floor(Math.random() * 49 + 1);
-    const random2 = Math.floor(Math.random() * 49 + 1);
-    const random3 = Math.floor(Math.random() * 49 + 1);
-    const random4 = Math.floor(Math.random() * 49 + 1);
-    const random5 = Math.floor(Math.random() * 49 + 1);
-    const random6 = Math.floor(Math.random() * 49 + 1);
+      numbers49.splice(randomIndex, 1);
+    }
 
-    newArr = [random1, random2, random3, random4, random5, random6];
+    setSixnumbers(oldNumbers); // update the state
 
-    setNewNumber(newArr);
-
-    // setNewNumber([...numbers, Math.random()]);
-    console.log("Numbers Array", numbers);
+    setTzoker(Math.ceil(Math.random() * 10));
   };
 
+  console.log(sixnumbers);
   return (
-    <div>
-      <div className="flex gap-5">
-        {numbers.map((item, i) => (
-          <div className="my-5 flex items-center justify-center bg-transparent text-blue-700 font-semibold    border border-blue-500 rounded-full p-4">
-            <p className="w-[20px] h-[20px] text-center" key={i}>
-              {item}
-            </p>
-          </div>
-        ))}
+    <div className="App">
+      <div className="allnumbers">
+        <div className="sixnumbers">
+          {sixnumbers.map((item, idx) => (
+            <input key={idx} value={item} disabled />
+          ))}
+        </div>
+
+        <div className="tzoker">
+          <input value={tzoker} disabled />
+        </div>
       </div>
-      <div className="flex gap-[10px]">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
-          onClick={() => setNewNumber([])}
-        >
-          Reset
-        </button>
-        <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-          onClick={randomHandler}
-        >
-          Show me lucky numbers
-        </button>
-      </div>
+      <button onClick={handleGenerate}>Generate</button>
     </div>
   );
 }
 
-export default RandomList;
+export default App;
